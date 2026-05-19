@@ -19,38 +19,86 @@ int main() {
     // criação dos vetores que representam os navios
     int navio1[3] = {3, 3, 3};
     int navio2[3] = {3, 3, 3};
+    int navio3[3] = {3, 3, 3};
+    int navio4[3] = {3, 3, 3};
 
     // posições iniciais dos navios 
     int posicao1i = 8, posicao1j = 1;
     int posicao2i = 2, posicao2j = 9;
+    int posicao3i = 2, posicao3j = 1;
+    int posicao4i = 7, posicao4j = 8;
 
     // verificação se as coordenadas são valídas, foi usado <= 10 para caso haja a entrada de dados pelo usuário ele selecione entre 1 e 10
-    if (posicao1i >= 0 && posicao1j >= 0 && posicao1j + 3 <= 10){
+    if (posicao1i > 0&& posicao1j > 0 && posicao1j + 3 <= 10){
         
         posicao1i = posicao1i-1;
         posicao1j = posicao1j-1;
 
         //navio horizontal
         for (int j = 0; j < 3; j++){
+            if (matriz[posicao1i][posicao1j + j] == 0){
             matriz[posicao1i][posicao1j + j] = navio1[j];
+            }else {
+               printf("Coordenada 1 invalida! O navio passa dos limites do tabuleiro, tente novamente."); 
+            }
         }
         
     } else{
         printf("Coordenada 1 invalida! O navio passa dos limites do tabuleiro, tente novamente.");
     }
     
-    if (posicao2i >= 0 && posicao2j >= 0 && posicao2i + 3 <= 10){
+    if (posicao2i > 0 && posicao2i + 3 <= 10 && posicao2j > 0){
         
         posicao2i = posicao2i-1;
         posicao2j = posicao2j-1;
 
         //navio vertical
         for (int i = 0; i < 3; i++){
+            if (matriz[posicao2i + i][posicao2j] == 0){
             matriz[posicao2i + i][posicao2j] = navio2[i];
+            } else{
+                printf("Coordenada 2 invalida! O navio passa dos limites do tabuleiro, tente novamente.");
+            }
         }
         
     } else{
         printf("Coordenada 2 invalida! O navio passa dos limites do tabuleiro, tente novamente.");
+    }
+
+    if (posicao3i > 0 && posicao3i + 3 <= 10 && posicao3j > 0 && posicao3j + 3 <= 10){
+        
+        posicao3i = posicao3i-1;
+        posicao3j = posicao3j-1;
+
+        //navio diagonal principal
+        for (int j = 0; j < 3; j++){
+            if (matriz[posicao3i + j][posicao3j + j] == 0){
+            matriz[posicao3i + j][posicao3j + j] = navio3[j];
+            } else{
+                printf("Coordenada 3 invalida! O navio passa dos limites do tabuleiro, tente novamente.");
+            }
+        }
+        
+    } else{
+        printf("Coordenada 3 invalida! O navio passa dos limites do tabuleiro, tente novamente.");
+    }
+
+    if (posicao4i > 0 && posicao4i + 3 <= 10 && posicao4j > 0 && posicao4j - 3 >= 0){
+        
+        posicao4i = posicao4i-1;
+        posicao4j = posicao4j-1;
+
+        //navio diagonal secundaria
+        for (int j = 0; j < 3; j++){
+            if (matriz[posicao4i + j][posicao4j - j] == 0){
+            matriz[posicao4i + j][posicao4j - j] = navio4[2 - j];
+            } else{
+                printf("Coordenada 4 invalida! O navio passa dos limites do tabuleiro, tente novamente.");
+            }
+        }
+        
+    } else{
+        printf("Coordenada 4 invalida! O navio passa dos limites do tabuleiro, tente novamente.");
     }
     
     int coordenadasi[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -77,15 +125,7 @@ int main() {
         }
         printf("\n");
     }
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
-
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
-
+    
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
     // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
